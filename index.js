@@ -2,10 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const productRouter = require('./routes/index');
 
+//initialize the app
 const app = express();
 
+//importing the db key for connection
 const db = require('./config/key').MongoURI;
 
+//mongodb connection to the application
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('MongoDb connection successful');
@@ -14,9 +17,10 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
         console.log(err);
     });
 
-
+//middleware for reading the json object
 app.use(express.json());
 
+//router of the api
 app.use('/products', productRouter);
 
 

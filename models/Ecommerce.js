@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+//product schema for ecommerce product
 const ecommerceApi = new mongoose.Schema({
     id: {
         type: Number,

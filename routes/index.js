@@ -3,6 +3,7 @@ const Product = require('../models/Ecommerce');
 
 const route = express.Router();
 
+//this route is for adding the product into the database
 route.post('/create', async (req, res) => {
     const newProduct = new Product(req.body);
     try {
@@ -13,6 +14,7 @@ route.post('/create', async (req, res) => {
     }
 });
 
+//this route is for updating the quantity of the product
 route.post('/:id',async (req,res)=>{
     try{
        const id = req.params.id;
@@ -25,6 +27,7 @@ route.post('/:id',async (req,res)=>{
     }
 });
 
+//this url is for deleting the product from database
 route.delete('/:id', async (req, res) => {
     try {
         await Product.findByIdAndDelete(req.params.id);
@@ -34,6 +37,7 @@ route.delete('/:id', async (req, res) => {
     }
 });
 
+//this url is for getting the products from database
 route.get('/',async (req,res)=>{
     try{
         let products = await Product.find();
